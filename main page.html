@@ -1,187 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Main Page</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      background: linear-gradient(135deg, #c1f2ee, #d8c3e8);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #4a4a4a;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    header h1 {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      color: #5e72e4;
-      margin: 0;
-    }
-
-    header h2 {
-      color: #525f7f;
-      margin-top: 5px;
-    }
-
-    header img {
-      width: 100%;
-      border-radius: 15px;
-      margin-top: 15px;
-    }
-
-    .categories {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .categories h2 {
-      color: #5e72e4;
-      margin-bottom: 30px;
-      font-size: 2rem;
-    }
-
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 20px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .category-card {
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 15px;
-      padding: 25px 10px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-
-    .category-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    }
-
-    .category-icon {
-      font-size: 2rem;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .trending-swaps {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .trending-swaps h2 {
-      color: #5e72e4;
-      margin-bottom: 20px;
-    }
-
-    .trending-card {
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 15px;
-      padding: 10px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-      margin: 0 10px;
-    }
-
-    .trending-card:hover {
-      transform: scale(1.05);
-    }
-
-    .swap-stories {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .swap-stories h2 {
-      color: #5e72e4;
-      margin-bottom: 20px;
-    }
-
-    .story-card {
-      position: relative;
-      margin: 0 auto;
-      width: 300px;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .story-card img {
-      width: 100%;
-      border-radius: 15px;
-    }
-
-    .story-quote {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 10px;
-      border-radius: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReWear | Sustainable Fashion Swap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-hover:hover {
+            animation: float 3s ease-in-out infinite;
+        }
+        .story-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(241, 245, 249, 0.7);
+            backdrop-filter: blur(2px);
+            z-index: -1;
+            border-radius: 1rem;
+        }
+        .carousel {
+            scroll-behavior: smooth;
+        }
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>My Swap App</h1>
-    <h2>Swap it - Own it~</h2>
-    <img src="https://placehold.co/1200x300" alt="Banner Image">
-  </header>
+<body class="bg-slate-50 font-sans">
+    <!-- TOP HEADER -->
+    <header class="bg-amber-50 border-b border-amber-100">
+        <div class="container mx-auto px-4 pb-8 pt-6">
+            <!-- Logo + Tagline -->
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center">
+                    <div class="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mr-3">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2f1fe908-4bac-4e7c-ab83-fdca70374ebc.png" alt="ThreadCycle logo - circular badge with two arrows forming a cycle in off-white color" class="w-12 h-12">
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-slate-800">ReWear</h1>
+                        <p class="text-sm text-slate-600">Swap style, save the planet</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Big Banner Image -->
+            <div class="rounded-2xl overflow-hidden shadow-lg relative h-64 md:h-80 lg:h-96">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e5f91c3c-bf94-48b1-afdb-9de27a43063a.png" alt="Sustainable fashion clothing displayed on a wooden rack with natural background" class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/60 to-transparent flex items-end p-6">
+                    <div>
+                        <h2 class="text-white text-2xl md:text-3xl font-bold mb-2">Sustainable fashion,</h2>
+                        <h3 class="text-white text-xl md:text-2xl font-medium">one swap at a time</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <section class="categories">
-    <h2>🌈 Explore Categories</h2>
-    <div class="categories-grid">
-      <div class="category-card"><span class="category-icon">👗</span> Sarees</div>
-      <div class="category-card"><span class="category-icon">👚</span> Kurtas</div>
-      <div class="category-card"><span class="category-icon">🧥</span> Jackets</div>
-      <div class="category-card"><span class="category-icon">👖</span> Trousers</div>
-      <div class="category-card"><span class="category-icon">👕</span> Tops</div>
-      <div class="category-card"><span class="category-icon">👧</span> Frocks</div>
-      <div class="category-card"><span class="category-icon">🎎</span> Ethnic</div>
-      <div class="category-card"><span class="category-icon">👗</span> Western</div>
-    </div>
-  </section>
+    <main class="container mx-auto px-4 py-8">
+        <!-- CATEGORIES SECTION -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
+                <span class="mr-2">🌈</span> Categories
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- Category Cards -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all hover:scale-105 hover:shadow-lg hover:bg-amber-50">
+                    <div class="h-32 p-4 flex items-center justify-center">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8927a096-eddf-4a71-92a2-ced091a33f0e.png" alt="Traditional Indian sarees in various colors draped elegantly" class="h-20 w-20 object-cover rounded-full">
+                    </div>
+                    <div class="bg-amber-100 p-2 text-center">
+                        <h3 class="font-medium text-slate-800">Sarees</h3>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105 float-hover">
+                    <div class="h-32 p-4 flex items-center justify-center">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/61c9506b-5d45-4bb4-9c6d-5dfec555ff47.png" alt="Stylish kurtas with intricate embroidery and modern cuts" class="h-20 w-20 object-cover rounded-full">
+                    </div>
+                    <div class="bg-amber-100 p-2 text-center">
+                        <h3 class="font-medium text-slate-800">Kurtas</h3>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105 float-hover">
+                    <div class="h-32 p-4 flex items-center justify-center">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7d149d3e-27c2-411f-9fa8-d2bdde3675ce.png" alt="Trendy jackets ranging from denim to leather styles" class="h-20 w-20 object-cover rounded-full">
+                    </div>
+                    <div class="bg-amber-100 p-2 text-center">
+                        <h3 class="font-medium text-slate-800">Jackets</h3>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105 float-hover">
+                    <div class="h-32 p-4 flex items-center justify-center">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8c576aaf-9194-4ca9-84d7-57829b74fdf8.png" alt="Stylish trousers including palazzos and culottes" class="h-20 w-20 object-cover rounded-full">
+                    </div>
+                    <div class="bg-amber-100 p-2 text-center">
+                        <h3 class="font-medium text-slate-800">Trousers</h3>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105 float-hover">
+                    <div class="h-32 p-4 flex items-center justify-center">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cbddbb47-5853-4f2e-8ba3-cb5a117ba31e.png" alt="Variety of casual and formal tops for everyday wear" class="h-20 w-20 object-cover rounded-full">
+                    </div>
+                    <div class="bg-amber-100 p-2 text-center">
+                        <h3 class="font-medium text-slate-800">Tops</h3>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105 float-hover">
+                    <div class="h-32 p-4 flex items-center justify-center">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dc4e37c3-28d3-4466-978f-f19f74fb8214.png" alt="Colorful frocks for women with floral and solid patterns" class="h-20 w-20 object-cover rounded-full">
+                    </div>
+                    <div class="bg-amber-100 p-2 text-center">
+                        <h3 class="font-medium text-slate-800">Frocks</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section class="trending-swaps">
-    <h2>🔥 Top Trending Swaps</h2>
-    <div style="display: flex; justify-content: center; flex-wrap: wrap;">
-      <div class="trending-card">
-        <img src="https://placehold.co/150x150" alt="Trending Item 1">
-        <p>Stylish Jacket</p>
-      </div>
-      <div class="trending-card">
-        <img src="https://placehold.co/150x150" alt="Trending Item 2">
-        <p>Elegant Saree</p>
-      </div>
-      <div class="trending-card">
-        <img src="https://placehold.co/150x150" alt="Trending Item 3">
-        <p>Casual Pants</p>
-      </div>
-    </div>
-  </section>
+        <!-- TRENDING SWAPS SECTION -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
+                <span class="mr-2">🔥</span> Top Trending Swaps
+            </h2>
+            <div class="relative">
+                <div id="trending-carousel" class="carousel flex overflow-x-auto gap-4 pb-6" style="scroll-snap-type: x mandatory;">
+                    <!-- Trend Item 1 -->
+                    <div class="flex-none w-64 sm:w-72 md:w-80" style="scroll-snap-align: start;">
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="h-48 relative">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/07fe7f34-d11f-4039-b748-350e446d8999.png" alt="Hand-block printed cotton kurta in indigo blue with ethnic motifs" class="w-full h-full object-cover">
+                                <div class="absolute top-2 right-2 bg-white/80 rounded-full p-1">
+                                    <span class="text-xs font-bold text-amber-600">🔥 Hot</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-slate-800">Indigo Block Print Kurta</h3>
+                                <p class="text-sm text-slate-600 mt-1">From Jaipur • 2.5k swaps</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trend Item 2 -->
+                    <div class="flex-none w-64 sm:w-72 md:w-80" style="scroll-snap-align: start;">
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="h-48 relative">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/988c1890-330e-4b57-993e-e86a21e45d54.png" alt="Bohemian style maxi dress with lace detailing in terracotta color" class="w-full h-full object-cover">
+                                <div class="absolute top-2 right-2 bg-white/80 rounded-full p-1">
+                                    <span class="text-xs font-bold text-amber-600">🌟 New</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-slate-800">Bohemian Maxi Dress</h3>
+                                <p class="text-sm text-slate-600 mt-1">Boho Chic • 1.8k swaps</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trend Item 3 -->
+                    <div class="flex-none w-64 sm:w-72 md:w-80" style="scroll-snap-align: start;">
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="h-48 relative">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fdf17bc0-70fa-4268-a77e-e070b09361e4.png" alt="Sustainable denim jacket with floral embroidery on back" class="w-full h-full object-cover">
+                                <div class="absolute top-2 right-2 bg-white/80 rounded-full p-1">
+                                    <span class="text-xs font-bold text-amber-600">🔥 Hot</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-slate-800">Embroidered Denim Jacket</h3>
+                                <p class="text-sm text-slate-600 mt-1">Sustainable • 3.2k swaps</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trend Item 4 -->
+                    <div class="flex-none w-64 sm:w-72 md:w-80" style="scroll-snap-align: start;">
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="h-48 relative">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/176d8826-c8e6-4ed1-86bd-36890c3e0d30.png" alt="Silk saree with golden zari work in pastel peach color" class="w-full h-full object-cover">
+                                <div class="absolute top-2 right-2 bg-white/80 rounded-full p-1">
+                                    <span class="text-xs font-bold text-amber-600">💎 Premium</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-slate-800">Peach Zari Silk Saree</h3>
+                                <p class="text-sm text-slate-600 mt-1">Banarasi Silk • 1.5k swaps</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section class="swap-stories">
-    <h2>📝 Swap Stories Board</h2>
-    <div class="story-card">
-      <img src="https://placehold.co/300x200" alt="Story Image">
-      <div class="story-quote">“This was my first swap...”</div>
-    </div>
-  </section>
+        <!-- SWAP STORIES SECTION -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
+                <span class="mr-2">📝</span> Swap Stories Board
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <!-- Story Card 1 -->
+                <div class="relative p-6 rounded-2xl overflow-hidden story-card">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4c677bf5-cfc4-4d0d-9bc6-752a381fdcae.png" alt="Woman smiling wearing a floral dress with background of clothing racks" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="relative z-10">
+                        <p class="italic text-slate-700 mb-4">"This was my first swap... I found the perfect dress for my cousin's wedding and saved over 2700 litres of water!"</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0333cc95-ece5-45e5-ace2-3a6c594891d5.png" alt="Portrait of Priya, a happy swap app user with curly hair and glasses" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-medium text-slate-800">Priya K.</p>
+                                <p class="text-xs text-slate-600">From Mumbai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Story Card 2 -->
+                <div class="relative p-6 rounded-2xl overflow-hidden story-card">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2b3b9b40-2b90-4556-8725-0f3464436a89.png" alt="Man in denim jacket posing in urban setting with secondhand clothes" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="relative z-10">
+                        <p class="italic text-slate-700 mb-4">"After discovering ThreadCycle, I refreshed my whole wardrobe without buying new. These pants alone cut 5kg of CO2!"</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/82e35133-9fab-48b1-b0d1-40fa0e9d2708.png" alt="Portrait of Arjun, a fashion-conscious young man with beard" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <p class="font-medium text-slate-800">Arjun S.</p>
+                                <p class="text-xs text-slate-600">From Bangalore</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button class="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-full transition-colors flex items-center justify-center">
+                    <span class="mr-2">+</span> Add Your Own Story
+                </button>
+                <button class="px-6 py-3 border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium rounded-full transition-colors flex items-center justify-center">
+                    <span>"This shirt saved 2700 litres, this pant cut 5kg CO<sub>2</sub>"</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- BOTTOM NAVIGATION -->
+    <footer class="bg-white border-t border-slate-200 sticky bottom-0">
+        <div class="container mx-auto">
+            <nav class="flex justify-around py-3">
+                <a href="#" class="flex flex-col items-center text-slate-500 hover:text-amber-600">
+                    <span class="text-lg">🔍</span>
+                    <span class="text-xs mt-1">Browse</span>
+                </a>
+                <a href="#" class="flex flex-col items-center text-amber-600">
+                    <span class="text-lg">+</span>
+                    <span class="text-xs mt-1">Swap</span>
+                </a>
+                <a href="#" class="flex flex-col items-center text-slate-500 hover:text-amber-600">
+                    <span class="text-lg">📝</span>
+                    <span class="text-xs mt-1">Stories</span>
+                </a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // Simple carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('trending-carousel');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            carousel.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - carousel.offsetLeft;
+                scrollLeft = carousel.scrollLeft;
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                isDown = false;
+            });
+
+            carousel.addEventListener('mouseup', () => {
+                isDown = false;
+            });
+
+            carousel.addEventListener('mousemove', (e) => {
+                if(!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - carousel.offsetLeft;
+                const walk = (x - startX) * 2;
+                carousel.scrollLeft = scrollLeft - walk;
+            });
+
+            // Auto-scroll carousel
+            setInterval(() => {
+                if (!isDown) {
+                    if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 2) {
+                        carousel.scrollTo({
+                            left: 0,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        carousel.scrollBy({
+                            left: 2,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            }, 3000);
+        });
+    </script>
 </body>
 </html>
+
