@@ -15,3 +15,5 @@ Team Members
 
 | [DESHNA REDDY] | 
 ydeshna15@gmail.com
+
+“This is the ReWear project submission for the sustainability swap theme. Explore index.html for main content and other individual HTML files for separate features.”
