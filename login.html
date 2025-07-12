@@ -1,337 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethereal Login</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --pastel-mint: #c1f2ee;
-            --pastel-lavender: #d8c3e8;
-            --pastel-peach: #ffd8be;
-            --pastel-pink: #ffcce6;
-            --pastel-blue: #b5e0e3;
-            --text-dark: #4a4a4a;
-            --text-light: #ffffff;
-        }
-
-        body {
-            background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-lavender));
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .login-container {
-            width: 100%;
-            max-width: 420px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .login-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, var(--pastel-pink), transparent 60%);
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        .login-container::after {
-            content: '';
-            position: absolute;
-            bottom: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, var(--pastel-blue), transparent 60%);
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        .logo-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo {
-            width: 80px;
-            height: 80px;
-            background-color: var(--pastel-peach);
-            border-radius: 50%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo img {
-            width: 60%;
-            height: auto;
-        }
-
-        h1 {
-            color: var(--text-dark);
-            text-align: center;
-            margin-bottom: 10px;
-            font-weight: 600;
-            font-size: 1.8rem;
-        }
-
-        .subtitle {
-            color: var(--text-dark);
-            text-align: center;
-            opacity: 0.7;
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 12px;
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px var(--pastel-blue);
-            background-color: white;
-        }
-
-        .form-group input::placeholder {
-            color: #aaa;
-        }
-
-        .remember-me {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            color: var(--text-dark);
-        }
-
-        .remember-me input {
-            margin-right: 10px;
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(90deg, var(--pastel-pink), var(--pastel-lavender));
-            color: var(--text-light);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .alt-options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .alt-btn {
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            background-color: var(--pastel-peach);
-            color: var(--text-dark);
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            flex: 1;
-            margin: 5px;
-            min-width: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .alt-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .link-group {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-
-        .link-group a {
-            color: var(--text-dark);
-            text-decoration: none;
-            margin: 0 10px;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .link-group a:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
-
-        .divider {
-            display: flex;
-            align-items: center;
-            margin: 20px 0;
-            color: var(--text-dark);
-            opacity: 0.5;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background-color: var(--text-dark);
-            opacity: 0.2;
-        }
-
-        .divider span {
-            padding: 0 15px;
-        }
-
-        @media (max-width: 480px) {
-            .login-container {
-                padding: 30px 20px;
-            }
-
-            .alt-options {
-                flex-direction: column;
-            }
-
-            .alt-btn {
-                width: 100%;
-            }
-
-            .link-group {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .link-group a {
-                margin: 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReWear | Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: #FFF7F1;
+    }
+  </style>
 </head>
-<body>
-    <div class="login-container">
-        <div class="logo-container">
-            <div class="logo">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/beb47a64-c96d-4c9f-b888-1f3b9fb71b9e.png" alt="Minimalist abstract droplet logo in soft lavender and mint colors" />
-            </div>
-            <h1>Welcome Back</h1>
-            <p class="subtitle">Sign in to continue your journey</p>
-        </div>
+<body class="min-h-screen flex items-center justify-center px-4">
 
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Enter your username" />
-        </div>
-
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter your password" />
-        </div>
-
-        <div class="remember-me">
-            <input type="checkbox" id="remember" />
-            <label for="remember">Remember me</label>
-        </div>
-
-        <button class="login-btn">Sign In</button>
-
-        <div class="divider">
-            <span>or</span>
-        </div>
-
-        <div class="alt-options">
-            <button class="alt-btn">Continue as Guest</button>
-            <button class="alt-btn">Forgot Password</button>
-        </div>
-
-        <div class="link-group">
-            <a href="#">Don't have an account? Sign Up</a>
-        </div>
+  <div class="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
+    <div class="text-center mb-6">
+      <div class="w-20 h-20 mx-auto mb-4 bg-amber-200 rounded-full flex items-center justify-center shadow">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/beb47a64-c96d-4c9f-b888-1f3b9fb71b9e.png" alt="ReWear Logo" class="w-10 h-10" />
+      </div>
+      <h1 class="text-2xl font-bold text-slate-800">Welcome Back</h1>
+      <p class="text-sm text-slate-500 mt-1">Sign in to continue your journey</p>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const loginBtn = document.querySelector('.login-btn');
-            const guestBtn = document.querySelector('.alt-btn:nth-of-type(1)');
-            const forgotBtn = document.querySelector('.alt-btn:nth-of-type(2)');
-            
-            loginBtn.addEventListener('click', function() {
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-                
-                if(username && password) {
-                    alert('Login successful! Loading your dashboard...');
-                } else {
-                    alert('Please enter both username and password');
-                }
-            });
-            
-            guestBtn.addEventListener('click', function() {
-                alert('Continuing as guest. Some features may be limited.');
-            });
-            
-            forgotBtn.addEventListener('click', function() {
-                alert('Password reset link has been sent to your email.');
-            });
-        });
-    </script>
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <label for="username" class="text-sm font-medium text-slate-700 block mb-1">Username</label>
+        <input id="username" type="text" class="w-full border border-gray-300 rounded-lg p-3" placeholder="Enter your username" />
+      </div>
+      <div>
+        <label for="password" class="text-sm font-medium text-slate-700 block mb-1">Password</label>
+        <input id="password" type="password" class="w-full border border-gray-300 rounded-lg p-3" placeholder="Enter your password" />
+      </div>
+
+      <div class="flex items-center">
+        <input id="remember" type="checkbox" class="mr-2" />
+        <label for="remember" class="text-sm text-slate-600">Remember me</label>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-semibold transition">
+        ♻️ Sign In
+      </button>
+    </form>
+
+    <div class="my-6 text-center text-sm text-slate-400">or</div>
+
+    <div class="flex flex-col gap-3">
+      <button id="guestBtn" class="py-2 bg-amber-100 hover:bg-amber-200 rounded-lg text-slate-700 font-medium">Continue as Guest</button>
+      <button id="forgotBtn" class="py-2 bg-amber-100 hover:bg-amber-200 rounded-lg text-slate-700 font-medium">Forgot Password</button>
+    </div>
+
+    <p class="text-center text-sm text-slate-500 mt-6">
+      Don't have an account? <a href="#" class="underline text-amber-700">Sign Up</a>
+    </p>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      if (username && password) {
+        alert("Login successful! Redirecting...");
+        window.location.href = "browse.html"; // You can make this dynamic later
+      } else {
+        alert("Please enter both username and password.");
+      }
+    });
+
+    document.getElementById("guestBtn").addEventListener("click", () => {
+      alert("Continuing as guest...");
+      window.location.href = "browse.html";
+    });
+
+    document.getElementById("forgotBtn").addEventListener("click", () => {
+      alert("Password reset instructions sent to your email.");
+    });
+  </script>
 </body>
 </html>
 
