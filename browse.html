@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReWear | Browse Items</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: #FFF7F1; /* pastel peach */
+    }
+    .product-card {
+      position: relative;
+      overflow: hidden;
+      background: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .hover-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(251, 191, 36, 0.8);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+    .product-card:hover .hover-overlay {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-700">
+
+  <header class="p-4 bg-amber-50 border-b border-amber-100">
+    <h1 class="text-2xl font-bold text-slate-800">ReWear</h1>
+    <nav class="mt-2 space-x-4">
+      <a href="index.html" class="text-amber-700 hover:underline">Home</a>
+      <a href="browse.html" class="text-amber-700 font-semibold underline">Browse</a>
+    </nav>
+  </header>
+
+  <main class="container mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold mb-8 text-slate-800">✨ Browse Items ✨</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+
+      <!-- Product Card Example 1 -->
+      <a href="product.html" class="product-card aspect-square flex items-center justify-center text-slate-700 text-xl font-semibold">
+        Example 1
+        <div class="hover-overlay">Floral Kurta</div>
+      </a>
+
+      <!-- Example 2 -->
+      <a href="product.html" class="product-card aspect-square flex items-center justify-center text-slate-700 text-xl font-semibold">
+        Example 2
+        <div class="hover-overlay">Vintage Saree</div>
+      </a>
+
+      <!-- Example 3 -->
+      <a href="product.html" class="product-card aspect-square flex items-center justify-center text-slate-700 text-xl font-semibold">
+        Example 3
+        <div class="hover-overlay">Boho Jacket</div>
+      </a>
+
+      <!-- Example 4 -->
+      <a href="product.html" class="product-card aspect-square flex items-center justify-center text-slate-700 text-xl font-semibold">
+        Example 4
+        <div class="hover-overlay">Cotton Top</div>
+      </a>
+
+      <!-- Example 5 -->
+      <a href="product.html" class="product-card aspect-square flex items-center justify-center text-slate-700 text-xl font-semibold">
+        Example 5
+        <div class="hover-overlay">Silk Dupatta</div>
+      </a>
+
+      <!-- Example 6 -->
+      <a href="product.html" class="product-card aspect-square flex items-center justify-center text-slate-700 text-xl font-semibold">
+        Example 6
+        <div class="hover-overlay">Ethnic Trousers</div>
+      </a>
+
+      <!-- Example 7 -->
+      <a href="product.html" class="product-card aspect-square flex items-center justify-center text-slate-700 text-xl font-semibold">
+        Example 7
+        <div class="hover-overlay">Casual Dress</div>
+      </a>
+
+      <!-- Example 8 -->
+      <a href="product.html" class="product-card aspect-square flex items-center justify-center text-slate-700 text-xl font-semibold">
+        Example 8
+        <div class="hover-overlay">Festive Kurta</div>
+      </a>
+
+      <!-- Example 9 -->
+      <a href="product.html" class="product-card aspect-square flex items-center justify-center text-slate-700 text-xl font-semibold">
+        Example 9
+        <div class="hover-overlay">Block Print Saree</div>
+      </a>
+
+    </div>
+  </main>
+
+</body>
+</html>
