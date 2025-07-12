@@ -37,7 +37,7 @@
         <h2 class="text-3xl font-bold mb-2 text-slate-800">Floral Printed Cotton Kurta</h2>
         <p class="text-slate-600 mb-4">Handblock printed organic cotton kurta with ethnic motifs and breathable comfort.</p>
         <p class="text-xl font-semibold text-amber-700 mb-2">250 Swap Points</p>
-        <button class="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-semibold">Request Swap</button>
+        <button onclick="openModal()" class="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-semibold">Request Swap</button>
         <div class="mt-6">
           <p><span class="font-semibold">Material:</span> 100% Organic Cotton</p>
           <p><span class="font-semibold">Size:</span> Medium</p>
@@ -65,8 +65,34 @@
         </a>
       </div>
     </div>
-
   </main>
+
+  <!-- MODAL -->
+  <div id="swapModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-xl w-80 text-center shadow-lg">
+      <h3 class="text-lg font-semibold text-slate-800 mb-4">Confirm Swap</h3>
+      <p class="text-slate-600 mb-6">Are you sure you want to request this swap?</p>
+      <div class="flex justify-center space-x-4">
+        <button onclick="confirmSwap()" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-md">Confirm</button>
+        <button onclick="closeModal()" class="px-4 py-2 border border-slate-300 text-slate-700 rounded-md">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('swapModal').classList.remove('hidden');
+    }
+    function closeModal() {
+      document.getElementById('swapModal').classList.add('hidden');
+    }
+    function confirmSwap() {
+      closeModal();
+      alert('Swap request sent! Added to My Swaps.');
+      // Here you’d update backend or localStorage in real flow.
+    }
+  </script>
 
 </body>
 </html>
+
