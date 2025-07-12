@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReWear | My Swaps</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: #FFF7F1; /* pastel peach */
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-700">
+
+  <header class="p-4 bg-amber-50 border-b border-amber-100">
+    <h1 class="text-2xl font-bold text-slate-800">ReWear</h1>
+    <nav class="mt-2 space-x-4">
+      <a href="browse.html" class="text-amber-700 hover:underline">Browse</a>
+      <a href="myswaps.html" class="text-amber-700 hover:underline font-semibold">My Swaps</a>
+    </nav>
+  </header>
+
+  <main class="container mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold mb-8 text-slate-800">My Swaps</h2>
+
+    <!-- Pending -->
+    <section class="mb-12">
+      <h3 class="text-xl font-semibold mb-4 text-slate-800">⏳ Pending</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-xl shadow flex items-center justify-between">
+          <div>
+            <p class="font-semibold text-slate-800">Floral Cotton Kurta</p>
+            <p class="text-slate-500 text-sm">Requested on: 12 July 2025</p>
+          </div>
+          <span class="text-2xl">⏳</span>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow flex items-center justify-between">
+          <div>
+            <p class="font-semibold text-slate-800">Block Print Saree</p>
+            <p class="text-slate-500 text-sm">Requested on: 10 July 2025</p>
+          </div>
+          <span class="text-2xl">⏳</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accepted -->
+    <section class="mb-12">
+      <h3 class="text-xl font-semibold mb-4 text-slate-800">✅ Accepted</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-xl shadow flex items-center justify-between">
+          <div>
+            <p class="font-semibold text-slate-800">Bohemian Maxi Dress</p>
+            <p class="text-slate-500 text-sm">Accepted on: 8 July 2025</p>
+          </div>
+          <span class="text-2xl text-green-600">✅</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rejected -->
+    <section class="mb-12">
+      <h3 class="text-xl font-semibold mb-4 text-slate-800">❌ Rejected</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-xl shadow flex items-center justify-between">
+          <div>
+            <p class="font-semibold text-slate-800">Vintage Denim Jacket</p>
+            <p class="text-slate-500 text-sm">Rejected on: 5 July 2025</p>
+          </div>
+          <span class="text-2xl text-red-600">❌</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
